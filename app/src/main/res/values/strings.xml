@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">AbnVenue</string>
+    <string name="search_hint">Search for cities</string>
+    <string name="title_activity_details">DetailsActivity</string>
+    <string name="details_description_title">Description</string>
+    <string name="details_contact_information_title">Contact Information</string>
+    <string name="details_address_title">Address</string>
+    <string name="details_rating_title">Rating: </string>
+    <string name="details_facebook">Facebook:</string>
+    <string name="venue_photos_title">Venue Photos</string>
+    <string name="venue_details_title">Venue Details</string>
+    <string name="details_instagram">Instagram:</string>
+    <string name="details_phone">Phone:</string>
+    <string name="details_twitter">Twitter:</string>
+    <string name="alert_title">Alert</string>
+    <string name="alert_body">No venues found for this location</string>
+    <string name="alert_positive">OK</string>
+</resources>

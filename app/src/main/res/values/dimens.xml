@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="main_padding">18dp</dimen>
+    <dimen name="details_padding">8dp</dimen>
+    <dimen name="search_elevation">2dp</dimen>
+    <dimen name="body">14sp</dimen>
+    <dimen name="titles">18sp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="details_photo_padding">8dp</dimen>
+</resources>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:elevation="@dimen/search_elevation"
+    app:cardCornerRadius="4dp"
+    android:padding="@dimen/main_padding"
+    app:cardUseCompatPadding="true">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="#EEF5FE"
+        android:padding="@dimen/main_padding">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/title"
+        android:text="Venue Title"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="@dimen/titles"
+        android:textStyle="bold"
+        android:layout_marginBottom="@dimen/main_padding"
+        />
+    <TextView
+        android:id="@+id/address"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="address"
+        android:textColor="@color/colorPrimary"
+        android:textSize="@dimen/body"
+        android:lines="3"
+
+        />
+    </LinearLayout>
+</android.support.v7.widget.CardView>

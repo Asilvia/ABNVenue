@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.abn.asilvia.abnvenue.R;
+import com.abn.asilvia.abnvenue.db.LocalVenues;
 import com.abn.asilvia.abnvenue.util.AppNavigation;
 import com.abn.asilvia.abnvenue.vo.VenueObject;
 
@@ -20,7 +21,7 @@ import java.util.List;
 
 public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
 
-    List<VenueObject> listVenues;
+    List<LocalVenues> listVenues;
     Context context;
 
     public MainAdapter(Context context) {
@@ -31,14 +32,14 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = (View) LayoutInflater.from(parent.getContext()).inflate(R.layout.venue_list_item, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.venue_list_item, parent, false);
         ViewHolder viewHolder = new ViewHolder(view);
         return viewHolder;
     }
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        final VenueObject item= listVenues.get(position);
+        final LocalVenues item= listVenues.get(position);
         holder.title.setText(item.getTitle());
         holder.address.setText(item.getAddress());
         holder.itemView.setOnClickListener(new View.OnClickListener() {
@@ -56,7 +57,7 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
         return listVenues.size();
     }
 
-    public void setListData(List<VenueObject> data)
+    public void setListData(List<LocalVenues> data)
     {
         this.listVenues.clear();
         this.listVenues.addAll(data);

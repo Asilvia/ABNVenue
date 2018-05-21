@@ -23,8 +23,8 @@ import dagger.Provides;
         }
 
         @Provides
-        ViewModelProvider.Factory mainViewModelProvider(MainViewModel coinListViewModel) {
-            return new ViewModelProviderFactory<>(coinListViewModel);
+        ViewModelProvider.Factory mainViewModelProvider(MainViewModel mainViewModel) {
+            return new ViewModelProviderFactory<>(mainViewModel);
         }
 
     }

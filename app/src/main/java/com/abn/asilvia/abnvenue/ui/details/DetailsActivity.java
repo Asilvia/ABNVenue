@@ -4,58 +4,49 @@ import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProvider;
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.MenuItem;
-import android.widget.TextView;
 
+import com.abn.asilvia.abnvenue.BR;
 import com.abn.asilvia.abnvenue.R;
-import com.abn.asilvia.abnvenue.ui.main.MainViewModel;
-import com.abn.asilvia.abnvenue.vo.VenueObject;
+import com.abn.asilvia.abnvenue.databinding.ActivityDetailsBinding;
+import com.abn.asilvia.abnvenue.databinding.ActivityMainBinding;
+import com.abn.asilvia.abnvenue.db.LocalVenues;
+import com.abn.asilvia.abnvenue.ui.base.BaseActivity;
 
 import javax.inject.Inject;
 
-import dagger.android.AndroidInjection;
-import timber.log.Timber;
-
-public class DetailsActivity extends AppCompatActivity {
+public class DetailsActivity extends BaseActivity<ActivityDetailsBinding, DetailsViewModel> {
 
     @Inject
     ViewModelProvider.Factory mViewModelFactory;
+    ActivityDetailsBinding mActivityDetailsBinding;
     private DetailsViewModel detailsViewModel;
 
-    TextView description;
-    TextView contactInformation;
-    TextView address;
-    TextView rating;
-    RecyclerView photos;
 
     PhotosAdapter adapter;
 
     String id;
     String title;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        getParameters();
         super.onCreate(savedInstanceState);
-        AndroidInjection.inject(this);
-        detailsViewModel = ViewModelProviders.of(this, mViewModelFactory).get(DetailsViewModel.class);
-        setContentView(R.layout.activity_details);
+        mActivityDetailsBinding = getViewDataBinding();
+        getParameters();
+
+
         detailsViewModel.getVenueDetails(id);
 
-        description = (TextView) findViewById(R.id.tvDescription);
-        contactInformation = (TextView)findViewById(R.id.tvContactInformation);
-        address = (TextView)findViewById(R.id.tvAddress);
-        rating = (TextView)findViewById(R.id.tvRating);
-        photos = (RecyclerView) findViewById(R.id.rvPhotos);
+
 
         adapter = new PhotosAdapter(this);
-        photos.setLayoutManager(new GridLayoutManager(this, 2));
-        photos.setHasFixedSize(true);
-        photos.setAdapter(adapter);
+
+        mActivityDetailsBinding.rvPhotos.setLayoutManager(new GridLayoutManager(this, 2));
+        mActivityDetailsBinding.rvPhotos.setHasFixedSize(true);
+        mActivityDetailsBinding.rvPhotos.setAdapter(adapter);
 
         getSupportActionBar().setElevation(0);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
@@ -65,13 +56,13 @@ public class DetailsActivity extends AppCompatActivity {
 
 
 
-        detailsViewModel.getObservableVenue().observe(this, new Observer<VenueObject>() {
+        detailsViewModel.getObservableVenue().observe(this, new Observer<LocalVenues>() {
             @Override
-            public void onChanged(@Nullable VenueObject venueObject) {
-                description.setText(venueObject.getDescription());
-                contactInformation.setText(venueObject.getContact_info());
-                address.setText(venueObject.getAddress());
-                rating.setText(String.valueOf(venueObject.getRating()));
+            public void onChanged(@Nullable LocalVenues venueObject) {
+                mActivityDetailsBinding.tvDescription.setText(venueObject.getDescription());
+                mActivityDetailsBinding.tvContactInformation.setText(venueObject.getContact_info());
+                mActivityDetailsBinding.tvAddress.setText(venueObject.getAddress());
+                mActivityDetailsBinding.tvRating.setText(String.valueOf(venueObject.getRating()));
                 adapter.setPhotosList(venueObject.getPhotos());
 
 
@@ -82,6 +73,24 @@ public class DetailsActivity extends AppCompatActivity {
 
 
     }
+
+    @Override
+    public DetailsViewModel getViewModel() {
+        detailsViewModel = ViewModelProviders.of(this, mViewModelFactory).get(DetailsViewModel.class);
+        return detailsViewModel;
+    }
+
+
+    @Override
+    public int getBindingVariable() {
+        return BR.viewModel;
+    }
+
+    @Override
+    public int getLayoutId() {
+        return R.layout.activity_details;
+    }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
@@ -91,6 +100,7 @@ public class DetailsActivity extends AppCompatActivity {
         }
         return true;
     }
+
     private void getParameters() {
         Intent intent = getIntent();
         if(intent!= null)

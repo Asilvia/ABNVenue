@@ -1,38 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="com.abn.asilvia.abnvenue.ui.main.MainActivity"
-    android:padding="@dimen/main_padding">
-    <android.support.v7.widget.CardView
-        android:id="@+id/search_layout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="8dp"
-        android:layout_marginRight="2dp"
-        android:layout_marginLeft="2dp"
-        android:layout_marginBottom="11dp"
-        android:background="@color/colorPrimary"
-        android:elevation="2dp">
+    tools:context="com.abn.asilvia.abnvenue.ui.main.MainActivity">
 
-    <android.support.v7.widget.SearchView
-        android:id="@+id/search"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:queryHint="@string/search_hint"
-        app:defaultQueryHint="@string/search_hint"
-        android:elevation="@dimen/search_elevation"/>
-</android.support.v7.widget.CardView>
+    <data>
 
+        <import type="android.view.View" />
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/venues"
+        <variable
+            name="viewModel"
+            type="com.abn.asilvia.abnvenue.ui.main.MainViewModel" />
+
+    </data>
+
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/search_layout"
-        android:nestedScrollingEnabled="false" />
-</RelativeLayout>
+        android:padding="@dimen/main_padding">
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/search_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginBottom="11dp"
+            android:layout_marginLeft="2dp"
+            android:layout_marginRight="2dp"
+            android:layout_marginTop="8dp"
+            android:background="@color/colorPrimary"
+            android:elevation="2dp">
+
+            <android.support.v7.widget.SearchView
+                android:id="@+id/search"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:elevation="@dimen/search_elevation"
+                app:defaultQueryHint="@string/search_hint"
+                app:queryHint="@string/search_hint" />
+        </android.support.v7.widget.CardView>
+
+        <TextView
+            android:id="@+id/tvLastSearched"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/search_layout"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="@dimen/main_padding"
+            android:textSize="@dimen/titles" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/venues"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/tvLastSearched"
+            android:nestedScrollingEnabled="false" />
+    </RelativeLayout>
+</layout>

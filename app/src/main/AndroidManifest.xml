@@ -22,6 +22,10 @@
         </activity>
         <activity android:name=".ui.details.DetailsActivity">
         </activity>
+        <receiver
+            android:name=".util.ConnectivityReceiver"
+            android:enabled="true">
+        </receiver>
     </application>
 
 </manifest>

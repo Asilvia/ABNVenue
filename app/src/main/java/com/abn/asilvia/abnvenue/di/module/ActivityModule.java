@@ -4,6 +4,7 @@ import com.abn.asilvia.abnvenue.ui.details.DetailsActivity;
 import com.abn.asilvia.abnvenue.ui.details.DetailsActivityModule;
 import com.abn.asilvia.abnvenue.ui.main.MainActivity;
 import com.abn.asilvia.abnvenue.ui.main.MainActivityModule;
+import com.abn.asilvia.abnvenue.util.ConnectivityReceiver;
 
 import dagger.Module;
 import dagger.android.ContributesAndroidInjector;
@@ -20,4 +21,7 @@ public abstract class ActivityModule {
 
     @ContributesAndroidInjector(modules = {DetailsActivityModule.class})
     abstract DetailsActivity contributeDetailsActivity();
+
+    @ContributesAndroidInjector
+    abstract ConnectivityReceiver bindConnectivityReceiver();
 }

@@ -5,6 +5,7 @@ import android.arch.lifecycle.LiveData;
 import com.abn.asilvia.abnvenue.vo.details.VenueDetails;
 import com.abn.asilvia.abnvenue.vo.search.Venues;
 
+import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
@@ -24,10 +25,18 @@ public interface MainApiHelper {
                                                      @Query("radius") int radius,
                                                      @Query("v") String version);
 
+    @GET("search")
+    Call <Venues> getVenueByLocationCall(@Query("client_id") String client_id,
+                                                     @Query("client_secret") String client_secret,
+                                                     @Query("near") String location,
+                                                     @Query("limit") int results_number,
+                                                     @Query("radius") int radius,
+                                                     @Query("v") String version);
+
     @GET("{venue_id}")
-    LiveData<ApiResponse<VenueDetails>> getVenueDetails(@Path(value = "venue_id", encoded = true) String venue_id,
-                                                        @Query("client_id") String client_id,
-                                                        @Query("client_secret") String client_secret,
-                                                        @Query("v") String version);
+    Call<VenueDetails> getVenueDetails(@Path(value = "venue_id", encoded = true) String venue_id,
+                                                    @Query("client_id") String client_id,
+                                                    @Query("client_secret") String client_secret,
+                                                    @Query("v") String version);
 
 }

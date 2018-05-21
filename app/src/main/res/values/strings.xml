@@ -15,4 +15,8 @@
     <string name="alert_title">Alert</string>
     <string name="alert_body">No venues found for this location</string>
     <string name="alert_positive">OK</string>
+    <string name="updated_empty">Search for awesome venues near you</string>
+    <string name="updated_location">Last searched location:</string>
+    <string name="main_connected">Good! Connected to Internet</string>
+    <string name="main_not_connected">Sorry! Not connected to internet</string>
 </resources>

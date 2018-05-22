@@ -80,6 +80,7 @@ dependencies {
     implementation "android.arch.persistence.room:runtime:$arch_version"
 
     testImplementation "junit:junit:$junit_version"
+    testImplementation "org.mockito:mockito-core:$mockito_version"
 
     androidTestImplementation "com.android.support.test.espresso:espresso-core:$espresso_version"
 

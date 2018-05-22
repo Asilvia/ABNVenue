@@ -8,15 +8,15 @@ import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertNotNull;
 
 /**
- * Created by asilvia on 21/05/2018.
+ * Created by asilvia on 22/05/2018.
  */
 public class MainActivityTest {
     @Rule
     public ActivityTestRule<MainActivity> activityActivityTestRule = new ActivityTestRule<MainActivity>(MainActivity.class);
-    private MainActivity mainActivity= null;
+    private MainActivity mainActivity = null;
 
     @Before
     public void setUp() throws Exception {
@@ -24,8 +24,7 @@ public class MainActivityTest {
     }
 
     @Test
-    public void testSearchLounch()
-    {
+    public void testSearchLounch() {
         View search = mainActivity.mActivityStartBinding.tvLastSearched;
         assertNotNull(search);
     }
